@@ -14,9 +14,9 @@ struct ContentView: View {
                     Label("Home", systemImage: "house.fill")
                 }
 
-            SearchView()
+            PostsView()
                 .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
+                    Label("Posts", systemImage: "magnifyingglass")
                 }
 
             ProfileView()
@@ -24,26 +24,5 @@ struct ContentView: View {
                     Label("Profile", systemImage: "person.fill")
                 }
         }
-    }
-}
-
-struct HomeView: View {
-    var body: some View {
-        Text("This is the Home Screen")
-            .font(.largeTitle)
-    }
-}
-
-struct SearchView: View {
-    var body: some View {
-        Text("This is the Search Screen")
-            .font(.largeTitle)
-    }
-}
-
-struct ProfileView: View {
-    var body: some View {
-        Text("This is the Profile Screen")
-            .font(.largeTitle)
     }
 }

@@ -21,6 +21,7 @@ struct SignInView: View {
                 }
             }
             .navigationTitle("Sign In")
+            .navigationBarBackButtonHidden(true)
         }
     }
 }

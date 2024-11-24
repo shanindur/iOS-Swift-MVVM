@@ -9,10 +9,8 @@ import SwiftUI
 
 struct DetailsView: View {
     var body: some View {
-        Text("Details View")
+        VStack {
+            Text("This is the detail view")
+        }
     }
-}
-
-#Preview {
-    DetailsView()
 }

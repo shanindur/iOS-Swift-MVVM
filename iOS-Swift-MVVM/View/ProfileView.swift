@@ -8,8 +8,36 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @StateObject private var viewModel = UserViewModel()
+    
     var body: some View {
-        Text("This is the Profile Screen")
-            .font(.largeTitle)
+        NavigationView {
+            Group {
+                if viewModel.isLoading {
+                    ProgressView("Loading...")
+                } else if let error = viewModel.errorMessage {
+                    Text("Error: \(error)")
+                        .foregroundColor(.red)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                } else {
+                    NavigationLink(destination:DetailsView()){
+                        List(viewModel.users) { user in
+                            VStack(alignment: .leading) {
+                                Text(user.name)
+                                    .font(.headline)
+                                Text(user.email)
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Users")
+            .onAppear {
+                viewModel.fetchUsers()
+            }
+        }
     }
 }

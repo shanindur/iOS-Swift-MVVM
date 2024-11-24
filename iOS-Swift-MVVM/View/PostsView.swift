@@ -8,9 +8,37 @@
 import SwiftUI
 
 struct PostsView: View {
+    @StateObject private var viewModel = PostViewModel()
+    
     var body: some View {
-        Text("This is the Posts Screen")
-            .font(.largeTitle)
+        NavigationView {
+            Group {
+                if viewModel.isLoading {
+                    ProgressView("Loading...")
+                } else if let error = viewModel.errorMessage {
+                    Text("Error: \(error)")
+                        .foregroundColor(.red)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                } else {
+                    List(viewModel.posts) { post in
+                        NavigationLink(destination: DetailsView()){
+                            VStack(alignment: .leading) {
+                                Text(post.title)
+                                    .font(.headline)
+                                Text(post.body)
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Posts")
+            .onAppear {
+                viewModel.fetchPosts()
+            }
+        }
     }
 }
 

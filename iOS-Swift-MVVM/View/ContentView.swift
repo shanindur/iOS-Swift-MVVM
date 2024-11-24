@@ -7,22 +7,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
-        TabView {
-            HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "house.fill")
-                }
-
-            PostsView()
-                .tabItem {
-                    Label("Posts", systemImage: "magnifyingglass")
-                }
-
-            ProfileView()
-                .tabItem {
-                    Label("Profile", systemImage: "person.fill")
-                }
+        NavigationView {
+            
+            TabView {
+                HomeView()
+                    .tabItem {
+                        Label("Home", systemImage: "house.fill")
+                    }
+                
+                PostsView()
+                    .tabItem {
+                        Label("Posts", systemImage: "magnifyingglass")
+                    }
+                
+                ProfileView()
+                    .tabItem {
+                        Label("Profile", systemImage: "person.fill")
+                    }
+            }
+            
         }
+        //        .navigationTitle("Home")
+        .navigationBarBackButtonHidden(true)
     }
 }

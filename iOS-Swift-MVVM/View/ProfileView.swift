@@ -11,8 +11,8 @@ struct ProfileView: View {
     @StateObject private var viewModel = UserViewModel()
     
     var body: some View {
-        NavigationView {
-            Group {
+        NavigationStack {
+            VStack {
                 if viewModel.isLoading {
                     ProgressView("Loading...")
                 } else if let error = viewModel.errorMessage {
@@ -21,15 +21,13 @@ struct ProfileView: View {
                         .multilineTextAlignment(.center)
                         .padding()
                 } else {
-                    NavigationLink(destination:DetailsView()){
-                        List(viewModel.users) { user in
-                            VStack(alignment: .leading) {
-                                Text(user.name)
-                                    .font(.headline)
-                                Text(user.email)
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-                            }
+                    List(viewModel.users) { user in
+                        VStack(alignment: .leading) {
+                            Text(user.name)
+                                .font(.headline)
+                            Text(user.email)
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
                         }
                     }
                 }
@@ -39,5 +37,6 @@ struct ProfileView: View {
                 viewModel.fetchUsers()
             }
         }
+        
     }
 }

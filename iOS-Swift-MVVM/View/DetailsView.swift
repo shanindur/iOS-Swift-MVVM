@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DetailsView: View {
+    
     var body: some View {
         VStack {
             Text("This is the detail view")

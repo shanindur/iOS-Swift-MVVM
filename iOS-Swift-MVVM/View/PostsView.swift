@@ -11,8 +11,10 @@ struct PostsView: View {
     @StateObject private var viewModel = PostViewModel()
     
     var body: some View {
-        NavigationView {
-            Group {
+        NavigationStack {
+            VStack {
+                Text("Posts")
+                    .font(.headline)
                 if viewModel.isLoading {
                     ProgressView("Loading...")
                 } else if let error = viewModel.errorMessage {
@@ -37,6 +39,7 @@ struct PostsView: View {
             .navigationTitle("Posts")
             .onAppear {
                 viewModel.fetchPosts()
+                
             }
         }
     }

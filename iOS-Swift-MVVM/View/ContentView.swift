@@ -7,10 +7,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isTabViewHidden: Bool = false
     
     var body: some View {
-        NavigationView {
-            
+        
+        NavigationStack {
             TabView {
                 HomeView()
                     .tabItem {
@@ -32,4 +33,8 @@ struct ContentView: View {
         //        .navigationTitle("Home")
         .navigationBarBackButtonHidden(true)
     }
+}
+
+#Preview {
+    ContentView()
 }

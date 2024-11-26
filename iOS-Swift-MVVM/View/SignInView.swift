@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignInView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 NavigationLink(destination: ContentView()) {
                     Text("Sign In")
@@ -21,6 +21,19 @@ struct SignInView: View {
                 }
             }
             .navigationTitle("Sign In")
+            .toolbar{
+//                ToolbarItem(placement: .topBarLeading){
+//                    Text("Sign In")
+//                        .font(.title)
+//                }
+                ToolbarItem(placement: .topBarTrailing){
+                    Button(action: {
+                        //Todo
+                    }, label: {
+                        Image(systemName: "plus")
+                    })
+                }
+            }
             .navigationBarBackButtonHidden(true)
         }
     }
